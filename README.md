@@ -2,69 +2,215 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Live Link
+
+`<link>` : <https://melodic-tulumba-b650d4.netlify.app/>
+
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can Use:
 
-### `npm start`
+### `npm i react-image-lightbox` or `yarn add react-image-lightbox`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br/>
+<br/>
 
-### `npm test`
+<img src="https://i.ibb.co/tBVNqQL/React-App.png" alt="React-App" border="0">
+<br/>
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://i.ibb.co/4wyLr6C/React-App-1.png" alt="React-App-1" border="0">
 
-### `npm run build`
+<br/>
+<br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+####HTML code for use Function Component
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+import React from 'react';
+import "./App.css";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
+import { useState } from "react";
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+function App() {
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const images = [
+    {
+      image: "01",
+      bigImage: "/img/brandLogo-1.png",
+      category: "Web Design",
+      title: "Design is a creative part",
+    },
+    {
+      image: "02",
+      bigImage: "/img/brandLogo-2.png",
+      category: "Mobile App",
+      title: "The service provide for designer",
+    },
+    {
+      image: "03",
+      bigImage: "/img/brandLogo-3.png",
+      category: "Web Design",
+      title: "Mobile App landing Design",
+    },
+    {
+      image: "04",
+      bigImage: "/img/brandLogo-4.png",
+      category: "Mobile App",
+      title: "Logo Design creativity",
+    },
+    {
+      image: "05",
+      bigImage: "/img/brandLogo-5.png",
+      category: "Web Design",
+      title: "T-shirt design is the part of design",
+    },
+    {
+      image: "06",
+      bigImage: "/img/brandLogo-6.png",
+      category: "Logo Design",
+      title: "Getting tickets to the big show",
+    },
+  ];
 
-### `npm run eject`
+  return (
+    <div className="App">
+      <div className="position">
+        {images.map((e, index) => (
+          <div className="imgFile">
+            {isOpen && (
+              <Lightbox
+                mainSrc={images[photoIndex].bigImage}
+                nextSrc={images[(photoIndex + 1) % images.length]}
+                prevSrc={
+                  images[(photoIndex + images.length - 1) % images.length]
+                }
+                onCloseRequest={() => {
+                  setIsOpen(false);
+                }}
+                onMovePrevRequest={() =>
+                  setPhotoIndex(
+                    (photoIndex + images.length - 1) % images.length
+                  )
+                }
+                onMoveNextRequest={() =>
+                  setPhotoIndex((photoIndex + 1) % images.length)
+                }
+              />
+            )}
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+            <img
+              onClick={() => {
+                setIsOpen(true);
+              }}
+              src={e.bigImage}
+              alt=""
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export default App;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br/>
+<br/>
 
-## Learn More
+####HTML code for use Class Component
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+import React, { Component } from 'react';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ const images = [
+    {
+      image: "01",
+      bigImage: "/img/brandLogo-1.png",
+      category: "Web Design",
+      title: "Design is a creative part",
+    },
+    {
+      image: "02",
+      bigImage: "/img/brandLogo-2.png",
+      category: "Mobile App",
+      title: "The service provide for designer",
+    },
+    {
+      image: "03",
+      bigImage: "/img/brandLogo-3.png",
+      category: "Web Design",
+      title: "Mobile App landing Design",
+    },
+    {
+      image: "04",
+      bigImage: "/img/brandLogo-4.png",
+      category: "Mobile App",
+      title: "Logo Design creativity",
+    },
+    {
+      image: "05",
+      bigImage: "/img/brandLogo-5.png",
+      category: "Web Design",
+      title: "T-shirt design is the part of design",
+    },
+    {
+      image: "06",
+      bigImage: "/img/brandLogo-6.png",
+      category: "Logo Design",
+      title: "Getting tickets to the big show",
+    },
+  ];
 
-### Code Splitting
+export default class LightboxExample extends Component {
+  constructor(props) {
+    super(props);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    this.state = {
+      photoIndex: 0,
+      isOpen: false,
+    };
+  }
 
-### Analyzing the Bundle Size
+  render() {
+    const { photoIndex, isOpen } = this.state;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    return (
+      <div>
+        <button type="button" onClick={() => this.setState({ isOpen: true })}>
+          Open Lightbox
+        </button>
 
-### Making a Progressive Web App
+        {isOpen && (
+          <Lightbox
+            mainSrc={images[photoIndex].bigImage}
+            nextSrc={images[(photoIndex + 1) % images.length]}
+            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            onCloseRequest={() => this.setState({ isOpen: false })}
+            onMovePrevRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + images.length - 1) % images.length,
+              })
+            }
+            onMoveNextRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + 1) % images.length,
+              })
+            }
+          />
+        )}
+      </div>
+    );
+  }
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
