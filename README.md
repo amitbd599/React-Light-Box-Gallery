@@ -10,7 +10,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can Use:
 
-### `npm i react-image-lightbox` or `yarn add react-image-lightbox`
+#### Install
+
+`$ npm i react-image-lightbox`  `$ yarn add react-image-lightbox`  
+
+`<link>` : <https://www.npmjs.com/package/react-image-lightbox>
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
