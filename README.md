@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Link
 
-`<link>` : <https://melodic-tulumba-b650d4.netlify.app/>
+`Demo` : <https://melodic-tulumba-b650d4.netlify.app/>
 
 ## Available Scripts
 
@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 <br/>
 <br/>
 
-####HTML code for use Function Component
+## Code for use Function Component
 
 ```
 import React from 'react';
@@ -125,7 +125,7 @@ export default App;
 <br/>
 <br/>
 
-####HTML code for use Class Component
+## Code for use Class Component
 
 ```
 import React, { Component } from 'react';
